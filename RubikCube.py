@@ -2,7 +2,7 @@ myCode='''
 
 import maya.cmds as cmds
 
-def myFunction():
+def rubikCube():
     
     selected=[]
     selected=cmds.ls(sl=True, tr=True)
@@ -34,7 +34,7 @@ def myFunction():
             cmds.parentConstraint(selected[0], i, mo=True)
 
 
-cmds.scriptJob(event=['SelectionChanged','myFunction()'])
-
+cmds.scriptJob(attributeChange=['GlobalMove.Reset_Cube',resetCube])
+#resetCube script
 '''
 cmds.scriptNode(st=2, bs=myCode.replace("'''","''" ), n='SN_RubikCube', stp='python')
